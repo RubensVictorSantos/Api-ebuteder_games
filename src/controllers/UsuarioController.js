@@ -10,6 +10,12 @@ module.exports = {
     async login(req,res){
         const {email,senha} = req.body;
 
+        console.log("\n************************************************************" +
+            "\nEmail: " + email +
+            "\nSenha: " + senha +
+            "\n************************************************************ \n"
+        )
+
         const usuario = await Usuario.findOne({where:{email}});
 
         const usuarioStringify = JSON.stringify(usuario);
@@ -45,6 +51,8 @@ module.exports = {
 
     async insert(req,res){
         const {nome,email,senha,id_nivel} = req.body;
+
+        console.log(typeof(req.body.nome));
 
         const emailJaCadastrado = await Usuario.findOne({where:{email}});
 

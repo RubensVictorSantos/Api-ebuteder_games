@@ -10,9 +10,9 @@ const { Sequelize } = require("sequelize");
     });
 
     try{
-        console.log("Database connection success")
+        console.log("\n Database connection success!\n")
     }catch(error){
-        console.log("Databse connection fail: ",error)
+        console.log("\n Databse connection fail: ",error)
     }
 
     module.exports = sequelize;

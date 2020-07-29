@@ -21,6 +21,7 @@ module.exports = {
 
     async insertCaminhoImagemJogo(req,res){
         const id_jogo = req.params.id;
+        
         const status = await Jogo.update({
             imagem: req.file.path
         },{
@@ -32,6 +33,17 @@ module.exports = {
 
     },
     
+    async select(req, res){
+
+        const id_console = req.params.id;
+
+        console.log("---------------------\n" + id_console + "\n---------------------")
+
+        const jogosConsole = await Jogo.findAll({ where: { id_console } })
+
+        return res.json(jogosConsole)
+
+    },
 
     async selectAll(req,res){
         return res.json(await Jogo.findAll())
@@ -40,6 +52,15 @@ module.exports = {
     async selectById(req,res){
 
         const id = req.params.id;
+        const jogo = await Jogo.findByPk(id);
+
+        return res.json(jogo)
+
+    },
+
+    async selectById(req,res){
+
+        const id = req.params.id_console;
         const jogo = await Jogo.findByPk(id);
 
         return res.json(jogo)

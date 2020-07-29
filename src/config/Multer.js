@@ -2,8 +2,9 @@ const multer = require("multer");
 const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
-
 const dir = "C:\\imagens_ebuteder_games";
+
+// const dir =  "C:/Users/Rubens/Desktop/pessoal/ebutder/web-ebutder_games/site/src/img"
 
 if(!fs.existsSync(dir)){
     fs.mkdirSync(dir);

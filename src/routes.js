@@ -1,9 +1,11 @@
 const express = require('express');
-const jogoController = require('./controllers/JogoController');
 const routes = express.Router();
 const multer = require("multer");
 const multerConfig = require("./config/Multer");
+
+const jogoController = require('./controllers/JogoController');
 const consoleController = require("./controllers/ConsoleController");
+const consoleVarianteController = require("./controllers/ConsoleVarianteController");
 const nivelController = require("./controllers/NivelController");
 const usuarioController = require("./controllers/UsuarioController");
 require("dotenv-safe").config();
@@ -33,6 +35,8 @@ routes.get("/jogos",jogoController.selectAll);
 
 routes.get("/jogo/:id",jogoController.selectById);
 
+routes.get("/jogosConsole/:id",jogoController.select);
+
 routes.get("/jogosOn",jogoController.selectWhereStatusOn);
 
 routes.put("/atualizarJogo",jogoController.update);
@@ -53,6 +57,10 @@ routes.get("/consolesOn",consoleController.selectWhereStatusOn);
 routes.put("/atualizarConsole",consoleController.update);
 
 routes.delete("/deletarConsole/:id",consoleController.delete);
+
+////Rotas Console
+
+routes.get("/consolesVarianteIdConsole/:id",consoleVarianteController.selectWhereIdConsole);
 
 /////Rotas dos niveis
 
